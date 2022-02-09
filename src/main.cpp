@@ -5,16 +5,17 @@
 
 void PrintHelp() {
     std::cout << "Usage: ./tee [-a] <file>\n\n";
-    std::cout << "The tee command reads its standart input until end-of-file, writing a copy of the input to standart outputand to the file specified as argument.";
+    std::cout << "The tee command reads its standart input until end-of-file, writing a copy of the input to standart outputand to the file specified as argument.\n\n";
     std::cout << "Options:\n";
-    std::cout << "-a\tOpen file in append mode.";
-    std::cout << "-h\tShow help.";
+    std::cout << "-a\tOpen file in append mode.\n";
+    std::cout << "-h\tShow help.\n";
 }
 
 std::pair<char*, bool> CommandLineParse(int argc, char* argv[]) {
     if (argc < 2 || argc > 3 || strcmp(argv[1], "-h") == 0 ||
         (argc == 3 && strcmp(argv[1], "-a"))) {
         PrintHelp();
+        exit(0);
     }
 
     bool append_mode = (argc == 3);
